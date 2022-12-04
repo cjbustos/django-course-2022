@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prjclase1</title>
+</head>
+<body>
+    <h1>Hello {{ name }}, this message sends from the server...</h1>
+    <h2>Field: {{ degree.area }}</h2>
+    {% if years_to_graduate < 5 %}
+        <h3 style="color: #008000;">Congrats, you have to graduate just in time... </h3>
+    {% else %}
+        <h3 style="color: #ff0000;">Sorry, maybe you're a lazy student...</h3>
+    {% endif %}
+    <h3>List of courses:</h3>
+    <ul>
+        {% for course in courses  %}
+        <li>{{ course }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

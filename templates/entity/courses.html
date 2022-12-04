@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Courses</title>
+    <link rel="stylesheet" type="text/css" href='{% static "css/styles.css" %}'>
+</head>
+<body>
+    <h4>List of courses:</h4>
+    <table>
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Department</th>
+                <th>University</th>
+                <th>Credits</th>
+            </tr>
+           
+        </thead>
+        {% for title, dep_name, entity, credits in courses  %}
+        <tr>
+            <td>{{ title }}</td>
+            <td>{{ dep_name }}</td>
+            <td>{{ entity }}</td>
+            <td>{{ credits }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
