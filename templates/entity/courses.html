@@ -1,15 +1,8 @@
-<!DOCTYPE html>
+{% extends 'base.html' %}
 {% load static %}
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Courses</title>
-    <link rel="stylesheet" type="text/css" href='{% static "css/styles.css" %}'>
-</head>
-<body>
-    <h4>List of courses:</h4>
+{% block title %}List of courses{% endblock %}
+{% block main_title %}Courses{% endblock %}
+{% block main %}
     <table>
         <thead>
             <tr>
@@ -29,5 +22,4 @@
         </tr>
         {% endfor %}
     </table>
-</body>
-</html>
+{% endblock %}
