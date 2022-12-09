@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Add therapist{% endblock %}
+{% block main_title %}Therapist form{% endblock %}
+{% block main %}
+    <form method="post">
+        {% csrf_token %}
+        {{ t_form.as_p }}
+        <br>
+        <input type="submit" value="Add Therapist">
+    </form>
+{% endblock %}

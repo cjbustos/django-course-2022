@@ -1,7 +1,7 @@
 from django import forms
 
-# Here load parent classes for hierarchy
-# One class for one resource
+# Here, load parents classes for hierarchy
+# A class for a resource
 
 class TherapistForm(forms.Form):
     id = forms.IntegerField(label="Id")

@@ -1,6 +1,8 @@
 from django.shortcuts import render
 from django.http import HttpResponse, JsonResponse
 import sqlite3
+# Use dot, I'm into the library, example ".forms"
+from .forms import TherapistForm
 
 # Create your views here.
 
@@ -73,4 +75,28 @@ def get_therapist_data(request, therapist_id, template_name='entity/therapist.ht
     therapist = therapist.fetchone()
     # fetchone() return a tuple, use index for show data in html template
     data = {"therapist":therapist}    
+    return render(request, template_name, data)
+
+# Call function twice, first to show and second to send values
+def add_therapist(request, template_name='entity/therapist_form.html'):
+    # Cycle ->
+    # First: enter to the view with blank fields
+    # Second: enter to the view with data loaded and method="POST"
+    if request.method == "POST":
+        form = TherapistForm(request.POST)
+        if form.is_valid():
+            conn = sqlite3.connect('providers.sqlite')
+            cursor = conn.cursor()
+            cursor.execute("INSERT INTO therapists VALUES (?, ?, ?, ?, ?)",
+            (form.cleaned_data["id"],
+            form.cleaned_data["name"],
+            form.cleaned_data["profile"],
+            form.cleaned_data["experience"],
+            form.cleaned_data["address"]))
+            conn.commit()
+            conn.close()
+            return HttpResponse("Data save successful!")
+    else:
+        t_form = TherapistForm()
+    data = {"t_form": t_form}
     return render(request, template_name, data)
