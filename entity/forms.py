@@ -1,13 +1,24 @@
 from django import forms
 
 # Here, load parents classes for hierarchy
-# A class for a resource
+# Only write a class for unique resource, in this case "TherapistForm.class"
 
 class TherapistForm(forms.Form):
     id = forms.IntegerField(label="Id")
     name = forms.CharField(label="Name", max_length=120)
-    profile = forms.CharField(label="Profile")
-    experience = forms.IntegerField(label="Experience")
+    PROFILE_TYPE = (
+        (1, "psicologia"),
+        (2, "psicopedagogia"),
+        (3, "fonoaudiologia"),
+        (4, "terapia ocupacional")
+    )
+    profile = forms.ChoiceField(label="Profile", choices=PROFILE_TYPE)
+    #experience = forms.IntegerField(label="Experience", required=False)
+    experience = forms.BooleanField(label="Experience", required=False)
     address = forms.CharField(label="Address", max_length=50)
+
+    # Date types options
+    # date_have_to_degree = forms.DateField(label="Año de egreso", input_formats=["%d/%m/%Y"])
+    # date_have_to_degree = forms.DateField(label="Año de egreso", widget=forms.DateInput(attrs={"type": "date"}))
 
 

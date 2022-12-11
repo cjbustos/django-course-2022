@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse, JsonResponse
 import sqlite3
 # Use dot, I'm into the library, example ".forms"
@@ -24,7 +24,7 @@ def get_all_therapists(request):
     html = """
             <html>
             <title> Therapists list </title>
-            <h1>Without html template</h1>
+            <h1>Note: without html template</h1>
             <table style="border: 1px solid">
                 <thead>
                     <tr>
@@ -64,7 +64,6 @@ def get_courses_by_therapist_id(request, therapist_id, template_name='entity/cou
     therapist_courses.execute('SELECT title, dept_name, entity, credits FROM courses WHERE therapist_id=?', [therapist_id])
     list_of_courses = therapist_courses.fetchall()
     data = {"courses": list_of_courses}
-    print(data)
     conn.close()
     return render(request, template_name, data)
 
@@ -73,16 +72,18 @@ def get_therapist_data(request, therapist_id, template_name='entity/therapist.ht
     therapist = conn.cursor()
     therapist.execute('SELECT id, name, profile, experience, address FROM therapists WHERE id=?', [therapist_id])
     therapist = therapist.fetchone()
-    # fetchone() return a tuple, use index for show data in html template
-    data = {"therapist":therapist}    
+    # fetchone() return a tuple, have to use index for show data in html template
+    data = {"therapist": therapist}    
     return render(request, template_name, data)
 
 # Call function twice, first to show and second to send values
 def add_therapist(request, template_name='entity/therapist_form.html'):
     # Cycle ->
-    # First: enter to the view with blank fields
-    # Second: enter to the view with data loaded and method="POST"
+    # First: to the view with blank fields
+    # Second: to the view with data loaded and method="POST" setting
     if request.method == "POST":
+        # Note: add "request.POST" in parent constructor
+        # Note: cleaned_data method has all data from the form
         form = TherapistForm(request.POST)
         if form.is_valid():
             conn = sqlite3.connect('providers.sqlite')
@@ -95,7 +96,8 @@ def add_therapist(request, template_name='entity/therapist_form.html'):
             form.cleaned_data["address"]))
             conn.commit()
             conn.close()
-            return HttpResponse("Data save successful!")
+            # Note: redirect method forward use the name attribute in path in urls.py
+            return redirect('therapists')
     else:
         t_form = TherapistForm()
     data = {"t_form": t_form}
