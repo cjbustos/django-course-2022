@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}List of persons{% endblock %}
+{% block main_title %}List of persons{% endblock main_title %}
+{% block main %}
+    <table>
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Localidad</th>
+                <th>Dirección</th>
+                <th>Teléfono</th>
+                <th>Email</th>
+            </tr>
+        </thead>
+        {% for person in persons  %}
+        <tr>
+            <td>{{ person.name }}</td>
+            <td>{{ person.location }}</td>
+            <td>{{ person.address }}</td>
+            <td>{{ person.phone_number }}</td>
+            <td>{{ person.email }}</td>
+        </tr>
+        {% endfor %}      
+    </table>
+{% endblock %}

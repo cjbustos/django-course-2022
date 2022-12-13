@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Person Data{% endblock %}
+{% block main_title %}Person Details{% endblock  %}
+{% block main %}
+    <div>
+        <p>Nombre: {{person.name}}</p>
+        <p>Localidad: {{person.location}}</p>
+    </div>
+{% endblock %}

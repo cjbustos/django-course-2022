@@ -3,6 +3,7 @@ from django.http import HttpResponse, JsonResponse
 import sqlite3
 # Use dot, I'm into the library, example ".forms"
 from .forms import TherapistForm
+from .models import Person
 
 # Create your views here.
 
@@ -101,4 +102,16 @@ def add_therapist(request, template_name='entity/therapist_form.html'):
     else:
         t_form = TherapistForm()
     data = {"t_form": t_form}
+    return render(request, template_name, data)
+
+def get_all_persons(request, template_name='entity/persons.html'):
+    persons_list = Person.objects.all()
+    data = {"persons": persons_list}
+    return render(request, template_name, data)
+
+# Get record from table Person
+def get_person_by_phone(request, phone, template_name='entity/person.html'):
+    # use the specific field for search in db, example: "phone_number"
+    person_by_phone = Person.objects.get(phone_number=phone)
+    data = {"person": person_by_phone}
     return render(request, template_name, data)

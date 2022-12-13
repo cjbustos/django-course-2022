@@ -10,6 +10,8 @@ urlpatterns = [
     path("courses", views.get_courses, name='courses'),
     path("courses/<int:therapist_id>", views.get_courses_by_therapist_id, name='therapist-courses'),
     path("add_therapist", views.add_therapist, name='add-therapist'),
+    path("persons", views.get_all_persons, name='persons'),
+    path("person/<int:phone>", views.get_person_by_phone, name='person-by-phone'),
 ]
 
 """ For example, name='greeting' - this prop handle internal control to serve """
