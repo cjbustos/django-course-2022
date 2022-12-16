@@ -21,4 +21,6 @@ class TherapistForm(forms.Form):
     # date_have_to_degree = forms.DateField(label="Año de egreso", input_formats=["%d/%m/%Y"])
     # date_have_to_degree = forms.DateField(label="Año de egreso", widget=forms.DateInput(attrs={"type": "date"}))
 
-
+class DiagnosticForm(forms.Form):
+    name = forms.CharField(label="Nombre")
+    dx_code = forms.CharField(label="Código")

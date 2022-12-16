@@ -2,8 +2,8 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse, JsonResponse
 import sqlite3
 # Use dot, I'm into the library, example ".forms"
-from .forms import TherapistForm
-from .models import Person
+from .forms import TherapistForm, DiagnosticForm
+from .models import Person, Diagnostic
 
 # Create your views here.
 
@@ -114,4 +114,23 @@ def get_person_by_phone(request, phone, template_name='entity/person.html'):
     # use the specific field for search in db, example: "phone_number"
     person_by_phone = Person.objects.get(phone_number=phone)
     data = {"person": person_by_phone}
+    return render(request, template_name, data)
+
+def get_all_diagnostics(request, template_name='entity/diagnostics.html'):
+    diagnostic_list = Diagnostic.objects.all()
+    data = {"diagnostics": diagnostic_list}
+    return render(request, template_name, data)
+
+def add_diagnostic(request, template_name='entity/diagnostic_form.html'):
+    pass
+    if(request.method == 'POST'):
+        form = DiagnosticForm(request.POST)
+        if form.is_valid():
+            Diagnostic.objects.create(
+                name=form.cleaned_data['name'],
+                dx_code=form.cleaned_data['dx_code'])
+            return redirect('diagnostics')     
+    else:
+        form = DiagnosticForm()
+    data = {"d_form": form}
     return render(request, template_name, data)

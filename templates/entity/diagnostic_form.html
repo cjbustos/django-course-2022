@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Add diagnostic{% endblock %}
+{% block main_title %}Diagnostic form{% endblock %}
+{% block main %}
+    <form method="post">
+        {% csrf_token %}
+        {{ d_form.as_p }}
+        <br>
+        <input type="submit" value="Add Diagnostic">
+    </form>
+{% endblock %}

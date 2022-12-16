@@ -12,6 +12,8 @@ urlpatterns = [
     path("add_therapist", views.add_therapist, name='add-therapist'),
     path("persons", views.get_all_persons, name='persons'),
     path("person/<int:phone>", views.get_person_by_phone, name='person-by-phone'),
+    path("diagnostics", views.get_all_diagnostics, name='diagnostics'),
+    path("add_diagnostic", views.add_diagnostic, name='add-diagnostic'),
 ]
 
 """ For example, name='greeting' - this prop handle internal control to serve """

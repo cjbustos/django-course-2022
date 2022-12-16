@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}List of diagnostics{% endblock %}
+{% block main_title %}Listado de diagnósticos{% endblock main_title %}
+{% block main %}
+    <table>
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Código</th>
+            </tr>
+        </thead>
+        {% for diagnostic in diagnostics  %}
+        <tr>
+            <td>{{ diagnostic.name }}</td>
+            <td>{{ diagnostic.dx_code }}</td>
+        </tr>
+        {% endfor %}      
+    </table>
+{% endblock %}
