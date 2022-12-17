@@ -149,3 +149,34 @@ def add_client(request, template_name='entity/client_form.html'):
         form = ClientForm()
     data = {'c_form': form}
     return render(request, template_name, data)
+
+def update_client(request, pk, template_name='entity/client_form.html'):
+    # pk es un parámetro para buscar el cliente
+    # 1ra. vez muestro el form y el html con los datos originales del registro
+    client = Client.objects.get(id=pk)
+    # Para que el formulario inicialice con los datos del cliente - instance=client
+    form = ClientForm(request.POST or None, instance=client)
+    if request.method == 'POST':
+        if form.is_valid():
+            form.save(commit=True)
+            return redirect('clients')
+    data = {'c_form': form}
+    return render(request, template_name, data)
+
+def get_client_by_param(request, initial, template_name='entity/client.html'):
+    # client_list = Client.objects.all()
+    client_list = Client.objects.filter(name__startswith=initial)
+    # client_list_m18 = Client.objects.filter(age__gte = age)
+    # cliente_list = client_list_m18.filter(edad__lte = 50)
+    # __range = (fecha_desde, fecha_hasta).order_by()
+    # GET.get('')
+    data = {"clients": client_list}
+    return render(request, template_name, data)
+
+def delete_client(request, pk, template_name='entity/client_confirm_delete.html'):
+    client = Client.objects.get(id=pk)
+    if request.method == 'POST':
+        client.delete()
+        return redirect('clients')
+    data = {'form': client}
+    return render(request, template_name, data)

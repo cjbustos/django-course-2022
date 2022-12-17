@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-8jb$la0ec43oxfa#bgqsen4&8d-x=cx@ws#p-561pa(kfim-6x
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['cbustos.pythonanywhere.com', 'localhost']
 
 
 # Application definition
@@ -119,6 +119,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
 STATIC_URL = 'static/'
+# STATIC_ROOT = '/home/cbustos/prjclase1/static'
 STATICFILES_DIRS = [BASE_DIR / 'static']
 
 # Default primary key field type
