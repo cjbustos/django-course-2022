@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Add Client{% endblock %}
+{% block main_title %}Client form{% endblock %}
+{% block main %}
+    <form method="post">
+        {% csrf_token %}
+        {{ c_form.as_p }}
+        <br>
+        <input type="submit" value="Add Client">
+    </form>
+{% endblock %}

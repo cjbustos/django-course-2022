@@ -1,5 +1,7 @@
 from django.urls import path
 from . import views
+# Preguntar por el login
+from django.contrib.auth.views import LoginView
 
 urlpatterns = [
     path("", views.greeting, name='greeting' ),
@@ -14,6 +16,8 @@ urlpatterns = [
     path("person/<int:phone>", views.get_person_by_phone, name='person-by-phone'),
     path("diagnostics", views.get_all_diagnostics, name='diagnostics'),
     path("add_diagnostic", views.add_diagnostic, name='add-diagnostic'),
+    path("clients", views.get_all_clients, name='clients'),
+    path("add_client", views.add_client, name='add-client'),
 ]
 
 """ For example, name='greeting' - this prop handle internal control to serve """

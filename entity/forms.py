@@ -1,5 +1,9 @@
 from django import forms
 
+# Work with models add
+from django.forms import ModelForm
+from .models import Diagnostic, Client
+
 # Here, load parents classes for hierarchy
 # Only write a class for unique resource, in this case "TherapistForm.class"
 
@@ -21,6 +25,17 @@ class TherapistForm(forms.Form):
     # date_have_to_degree = forms.DateField(label="Año de egreso", input_formats=["%d/%m/%Y"])
     # date_have_to_degree = forms.DateField(label="Año de egreso", widget=forms.DateInput(attrs={"type": "date"}))
 
-class DiagnosticForm(forms.Form):
-    name = forms.CharField(label="Nombre")
-    dx_code = forms.CharField(label="Código")
+# class DiagnosticForm(forms.Form):
+#     name = forms.CharField(label="Nombre")
+#     dx_code = forms.CharField(label="Código")
+
+# DiagnosticForm refactor - Rewrite form when come back to the models
+class DiagnosticForm(ModelForm):
+    class Meta:
+        model = Diagnostic
+        fields = '__all__'
+
+class ClientForm(ModelForm):
+    class Meta:
+        model = Client
+        fields = '__all__'

@@ -23,6 +23,16 @@ class Diagnostic(models.Model):
     name = models.CharField("Nombre", max_length=60)
     dx_code = models.CharField("Código", max_length=60)
 
+    class Meta:
+        # Use to change name of the model definition on Admin UI
+        verbose_name_plural = 'Diagnosticos'
+        # Use ordering if you need it
+        ordering = ['name', 'dx_code']
+    
+    # Change view and customize
+    def __str__(self):
+        return "Name: %s Code: %s" % (self.name, self.dx_code)
+
 class School(models.Model):
     name = models.CharField("Nombre Escuela", max_length=60)
     school_type = models.CharField("Tipo Escuela", max_length=15)

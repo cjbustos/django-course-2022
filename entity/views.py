@@ -2,8 +2,8 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse, JsonResponse
 import sqlite3
 # Use dot, I'm into the library, example ".forms"
-from .forms import TherapistForm, DiagnosticForm
-from .models import Person, Diagnostic
+from .forms import TherapistForm, DiagnosticForm, ClientForm
+from .models import Person, Diagnostic, Client
 
 # Create your views here.
 
@@ -122,7 +122,6 @@ def get_all_diagnostics(request, template_name='entity/diagnostics.html'):
     return render(request, template_name, data)
 
 def add_diagnostic(request, template_name='entity/diagnostic_form.html'):
-    pass
     if(request.method == 'POST'):
         form = DiagnosticForm(request.POST)
         if form.is_valid():
@@ -133,4 +132,20 @@ def add_diagnostic(request, template_name='entity/diagnostic_form.html'):
     else:
         form = DiagnosticForm()
     data = {"d_form": form}
+    return render(request, template_name, data)
+
+def get_all_clients(request, template_name='entity/clients.html'):
+    client_list = Client.objects.all()
+    data = {"clients": client_list}
+    return render(request, template_name, data)
+
+def add_client(request, template_name='entity/client_form.html'):
+    if request.method == 'POST':
+        form = ClientForm(request.POST)
+        if form.is_valid():
+            form.save(commit=True)
+            return redirect('clients')
+    else:
+        form = ClientForm()
+    data = {'c_form': form}
     return render(request, template_name, data)
