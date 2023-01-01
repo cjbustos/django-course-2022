@@ -1,6 +1,5 @@
 from django.urls import path
 from . import views
-# Preguntar por el login
 from django.contrib.auth.views import LoginView
 
 urlpatterns = [

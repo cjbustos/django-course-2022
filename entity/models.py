@@ -1,6 +1,10 @@
 from django.db import models
 
 # Create your models here.
+# python manage.py makemigrations
+# python manage.py migrate
+
+# python manage.py createsuperuser -> admin models from ui
 
 PROFILE_TYPES = (
     ("PSP", "Psicopedagogía"),
@@ -72,5 +76,4 @@ class Contract(models.Model):
     is_active = models.BooleanField("Activo")
     status = models.CharField("Estado", max_length=20)
     obs = models.CharField("Observaciones", max_length=150, null=True, blank=True)
-
 

@@ -1,8 +1,24 @@
 {% extends 'base.html' %}
 {% load static %}
-{% block title %}ABM Clientes{% endblock %}
+{% block title %}Home{% endblock %}
+{% block main_title %}Home page{% endblock %}
+{% block main %}
+<h1>Hello {{ name }}, this message sends from the server...</h1>
+    <h2>Field: {{ degree.area }}</h2>
+    {% if years_to_graduate < 5 %}
+        <h3 style="color: #008000;">Congrats, you have to graduate just in time... </h3>
+    {% else %}
+        <h3 style="color: #ff0000;">Sorry, maybe you're a lazy student...</h3>
+    {% endif %}
+    <h3>List of courses:</h3>
+    <ul>
+        {% for course in courses  %}
+        <li>{{ course }}</li>
+        {% endfor %}
+    </ul>
+{% endblock %}
 
-{% comment %} <!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -25,5 +41,5 @@
         {% endfor %}
     </ul>
 </body>
-</html> {% endcomment %}
+</html> -->
 

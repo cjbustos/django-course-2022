@@ -16,7 +16,7 @@ def greeting(request, template_name='entity/greeting.html'):
     return render(request, template_name, data)
 
 def about(request):
-    return HttpResponse('First class of Django...')
+    return HttpResponse('Project Grupo Zenit')
 
 def get_all_therapists(request):
     conn = sqlite3.connect('providers.sqlite')

@@ -3,41 +3,41 @@
 {% block title %}List of clients{% endblock %}
 {% block main_title %}Listado de clientes{% endblock main_title %}
 {% block main %}
-    <table>
-        <thead>
+        <table>
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Fecha de Nac</th>
+                    <th>Edad</th>
+                    <th>DNI</th>
+                    <th>Diagnóstico</th>
+                    <th>Localidad</th>
+                    <th>Teléfono</th>
+                    <th>Email</th>
+                    <th>Obra Social</th>
+                    <th>Nro. Afil</th>
+                    <th>Nivel</th>
+                    <th>Update</th>
+                    <th>Delete</th>
+                </tr>
+            </thead>
+            {% for client in clients  %}
             <tr>
-                <th>Nombre</th>
-                <th>Fecha de Nac</th>
-                <th>Edad</th>
-                <th>DNI</th>
-                <th>Diagnóstico</th>
-                <th>Localidad</th>
-                <th>Teléfono</th>
-                <th>Email</th>
-                <th>Obra Social</th>
-                <th>Nro. Afil</th>
-                <th>Nivel</th>
-                <th>Update</th>
-                <th>Delete</th>
+                <td>{{ client.name }}</td>
+                <td>{{ client.birthday_date}}</td>
+                <td>{{ client.age}}</td>
+                <td>{{ client.dni_number}}</td>
+                <td>{{ client.diagnostic.name}}</td>
+                <td>{{ client.location}}</td>
+                <td>{{ client.phone_number}}</td>
+                <td>{{ client.email}}</td>
+                <td>{{ client.health_insurance_name}}</td>
+                <td>{{ client.health_insurance_number}}</td>
+                <td>{{ client.school_level}}</td>
+                <!-- Dejamos un espacio entre el name de la view y el client.id con el fin de pasar el argumento -->
+                <td><a href="{% url "update-client" client.id %}"><img src="{% static 'img/edit.png' %}"</a></td>
+                <td><a href="{% url "delete-client" client.id %}"><img src="{% static 'img/delete.png' %}"</a></td>
             </tr>
-        </thead>
-        {% for client in clients  %}
-        <tr>
-            <td>{{ client.name }}</td>
-            <td>{{ client.birthday_date}}</td>
-            <td>{{ client.age}}</td>
-            <td>{{ client.dni_number}}</td>
-            <td>{{ client.diagnostic.name}}</td>
-            <td>{{ client.location}}</td>
-            <td>{{ client.phone_number}}</td>
-            <td>{{ client.email}}</td>
-            <td>{{ client.health_insurance_name}}</td>
-            <td>{{ client.health_insurance_number}}</td>
-            <td>{{ client.school_level}}</td>
-            <!-- Dejamos un espacio entre el name de la view y el client.id con el fin de pasar el argumento -->
-            <td><a href="{% url "update-client" client.id %}"><img src="{% static 'img/edit.png' %}"</a></td>
-            <td><a href="{% url "delete-client" client.id %}"><img src="{% static 'img/delete.png' %}"</a></td>
-        </tr>
-        {% endfor %}      
-    </table>
+            {% endfor %}      
+        </table>
 {% endblock %}
