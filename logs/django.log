@@ -1,0 +1,48 @@
+"GET /about HTTP/1.1" 200 19
+(0.000) SELECT "entity_client"."id", "entity_client"."name", "entity_client"."birthday_date", "entity_client"."age", "entity_client"."dni_number", "entity_client"."diagnostic_id", "entity_client"."location", "entity_client"."phone_number", "entity_client"."email", "entity_client"."health_insurance_name", "entity_client"."health_insurance_number", "entity_client"."school_level" FROM "entity_client"; args=(); alias=default
+(0.000) SELECT "entity_diagnostic"."id", "entity_diagnostic"."name", "entity_diagnostic"."dx_code" FROM "entity_diagnostic" WHERE "entity_diagnostic"."id" = 1 LIMIT 21; args=(1,); alias=default
+"GET /clients HTTP/1.1" 200 1701
+"GET /static/img/edit.png HTTP/1.1" 304 0
+"GET /static/img/delete.png HTTP/1.1" 304 0
+File /Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/conf/locale/es_AR/formats.py first seen with mtime 1672268485.6602037
+File /Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/conf/locale/es/formats.py first seen with mtime 1672268485.6575484
+File /Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/conf/locale/es_AR/__init__.py first seen with mtime 1672268485.659579
+File /Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/conf/locale/es/__init__.py first seen with mtime 1672268485.6569946
+(0.000) SELECT "entity_client"."id", "entity_client"."name", "entity_client"."birthday_date", "entity_client"."age", "entity_client"."dni_number", "entity_client"."diagnostic_id", "entity_client"."location", "entity_client"."phone_number", "entity_client"."email", "entity_client"."health_insurance_name", "entity_client"."health_insurance_number", "entity_client"."school_level" FROM "entity_client" WHERE "entity_client"."id" = 5 LIMIT 21; args=(5,); alias=default
+(0.000) SELECT "entity_diagnostic"."id", "entity_diagnostic"."name", "entity_diagnostic"."dx_code" FROM "entity_diagnostic" ORDER BY "entity_diagnostic"."name" ASC, "entity_diagnostic"."dx_code" ASC; args=(); alias=default
+"GET /update_client/5 HTTP/1.1" 200 2729
+(0.000) SELECT "entity_client"."id", "entity_client"."name", "entity_client"."birthday_date", "entity_client"."age", "entity_client"."dni_number", "entity_client"."diagnostic_id", "entity_client"."location", "entity_client"."phone_number", "entity_client"."email", "entity_client"."health_insurance_name", "entity_client"."health_insurance_number", "entity_client"."school_level" FROM "entity_client" WHERE "entity_client"."id" = 5 LIMIT 21; args=(5,); alias=default
+(0.000) SELECT "entity_diagnostic"."id", "entity_diagnostic"."name", "entity_diagnostic"."dx_code" FROM "entity_diagnostic" WHERE "entity_diagnostic"."id" = 2 LIMIT 21; args=(2,); alias=default
+(0.000) SELECT 1 AS "a" FROM "entity_diagnostic" WHERE "entity_diagnostic"."id" = 2 LIMIT 1; args=(1, 2); alias=default
+(0.002) UPDATE "entity_client" SET "name" = 'Bustos', "birthday_date" = '1980-09-19', "age" = 42, "dni_number" = 28236056, "diagnostic_id" = 2, "location" = 'Palermo', "phone_number" = 1159477626, "email" = 'bustoscarlosj@gmail.com', "health_insurance_name" = 'OMINT', "health_insurance_number" = 11223344, "school_level" = 'UNIVERSITARIO' WHERE "entity_client"."id" = 5; args=('Bustos', '1980-09-19', 42, 28236056, 2, 'Palermo', 1159477626, 'bustoscarlosj@gmail.com', 'OMINT', 11223344, 'UNIVERSITARIO', 5); alias=default
+"POST /update_client/5 HTTP/1.1" 302 0
+(0.001) SELECT "entity_client"."id", "entity_client"."name", "entity_client"."birthday_date", "entity_client"."age", "entity_client"."dni_number", "entity_client"."diagnostic_id", "entity_client"."location", "entity_client"."phone_number", "entity_client"."email", "entity_client"."health_insurance_name", "entity_client"."health_insurance_number", "entity_client"."school_level" FROM "entity_client"; args=(); alias=default
+(0.000) SELECT "entity_diagnostic"."id", "entity_diagnostic"."name", "entity_diagnostic"."dx_code" FROM "entity_diagnostic" WHERE "entity_diagnostic"."id" = 2 LIMIT 21; args=(2,); alias=default
+"GET /clients HTTP/1.1" 200 1701
+File /Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/_strptime.py first seen with mtime 1666637452.0
+(0.001) SELECT "entity_diagnostic"."id", "entity_diagnostic"."name", "entity_diagnostic"."dx_code" FROM "entity_diagnostic" ORDER BY "entity_diagnostic"."name" ASC, "entity_diagnostic"."dx_code" ASC; args=(); alias=default
+"GET /add_client HTTP/1.1" 200 2547
+(0.000) SELECT "entity_diagnostic"."id", "entity_diagnostic"."name", "entity_diagnostic"."dx_code" FROM "entity_diagnostic" WHERE "entity_diagnostic"."id" = 4 LIMIT 21; args=(4,); alias=default
+(0.000) SELECT 1 AS "a" FROM "entity_diagnostic" WHERE "entity_diagnostic"."id" = 4 LIMIT 1; args=(1, 4); alias=default
+(0.001) INSERT INTO "entity_client" ("name", "birthday_date", "age", "dni_number", "diagnostic_id", "location", "phone_number", "email", "health_insurance_name", "health_insurance_number", "school_level") VALUES ('Jorge', '1980-09-19', 42, 28236056, 4, 'Colegiales', 1122334455, 'bustoscarlosj@gmail.com', 'OMINT', 1234, 'UNIVERSITARIO') RETURNING "entity_client"."id"; args=('Jorge', '1980-09-19', 42, 28236056, 4, 'Colegiales', 1122334455, 'bustoscarlosj@gmail.com', 'OMINT', 1234, 'UNIVERSITARIO'); alias=default
+"POST /add_client HTTP/1.1" 302 0
+(0.001) SELECT "entity_client"."id", "entity_client"."name", "entity_client"."birthday_date", "entity_client"."age", "entity_client"."dni_number", "entity_client"."diagnostic_id", "entity_client"."location", "entity_client"."phone_number", "entity_client"."email", "entity_client"."health_insurance_name", "entity_client"."health_insurance_number", "entity_client"."school_level" FROM "entity_client"; args=(); alias=default
+(0.000) SELECT "entity_diagnostic"."id", "entity_diagnostic"."name", "entity_diagnostic"."dx_code" FROM "entity_diagnostic" WHERE "entity_diagnostic"."id" = 2 LIMIT 21; args=(2,); alias=default
+(0.000) SELECT "entity_diagnostic"."id", "entity_diagnostic"."name", "entity_diagnostic"."dx_code" FROM "entity_diagnostic" WHERE "entity_diagnostic"."id" = 4 LIMIT 21; args=(4,); alias=default
+"GET /clients HTTP/1.1" 200 2425
+(0.000) SELECT "entity_client"."id", "entity_client"."name", "entity_client"."birthday_date", "entity_client"."age", "entity_client"."dni_number", "entity_client"."diagnostic_id", "entity_client"."location", "entity_client"."phone_number", "entity_client"."email", "entity_client"."health_insurance_name", "entity_client"."health_insurance_number", "entity_client"."school_level" FROM "entity_client" WHERE "entity_client"."id" = 7 LIMIT 21; args=(7,); alias=default
+"GET /delete_client/7 HTTP/1.1" 200 645
+(0.001) SELECT "entity_client"."id", "entity_client"."name", "entity_client"."birthday_date", "entity_client"."age", "entity_client"."dni_number", "entity_client"."diagnostic_id", "entity_client"."location", "entity_client"."phone_number", "entity_client"."email", "entity_client"."health_insurance_name", "entity_client"."health_insurance_number", "entity_client"."school_level" FROM "entity_client" WHERE "entity_client"."id" = 7 LIMIT 21; args=(7,); alias=default
+(0.000) SELECT "entity_contract"."id", "entity_contract"."therapist_id", "entity_contract"."client_id", "entity_contract"."start_date", "entity_contract"."contract_type", "entity_contract"."school_id", "entity_contract"."is_active", "entity_contract"."status", "entity_contract"."obs" FROM "entity_contract" WHERE "entity_contract"."client_id" IN (7); args=(7,); alias=default
+(0.000) BEGIN; args=None; alias=default
+(0.001) DELETE FROM "entity_client" WHERE "entity_client"."id" IN (7); args=(7,); alias=default
+"POST /delete_client/7 HTTP/1.1" 302 0
+(0.000) SELECT "entity_client"."id", "entity_client"."name", "entity_client"."birthday_date", "entity_client"."age", "entity_client"."dni_number", "entity_client"."diagnostic_id", "entity_client"."location", "entity_client"."phone_number", "entity_client"."email", "entity_client"."health_insurance_name", "entity_client"."health_insurance_number", "entity_client"."school_level" FROM "entity_client"; args=(); alias=default
+(0.000) SELECT "entity_diagnostic"."id", "entity_diagnostic"."name", "entity_diagnostic"."dx_code" FROM "entity_diagnostic" WHERE "entity_diagnostic"."id" = 2 LIMIT 21; args=(2,); alias=default
+"GET /clients HTTP/1.1" 200 1701
+(0.000) SELECT "entity_client"."id", "entity_client"."name", "entity_client"."birthday_date", "entity_client"."age", "entity_client"."dni_number", "entity_client"."diagnostic_id", "entity_client"."location", "entity_client"."phone_number", "entity_client"."email", "entity_client"."health_insurance_name", "entity_client"."health_insurance_number", "entity_client"."school_level" FROM "entity_client"; args=(); alias=default
+(0.000) SELECT "entity_diagnostic"."id", "entity_diagnostic"."name", "entity_diagnostic"."dx_code" FROM "entity_diagnostic" WHERE "entity_diagnostic"."id" = 2 LIMIT 21; args=(2,); alias=default
+"GET /clients HTTP/1.1" 200 1701
+"GET /therapists-json HTTP/1.1" 200 388
+(0.000) SELECT "entity_person"."id", "entity_person"."name", "entity_person"."location", "entity_person"."address", "entity_person"."phone_number", "entity_person"."email" FROM "entity_person"; args=(); alias=default
+"GET /persons HTTP/1.1" 200 1064
