@@ -1,22 +1,23 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block title %}List of therapists{% endblock %}
-{% block secondary_title %}Name:{{therapist.1}}{% endblock %}
+{% block secondary_title %}Nombre: {{therapist.1}}{% endblock %}
 {% block main %}
     <table>
         <thead>
             <tr>
-                <th>Degree</th>
-                <th>Experience</th>
-                <th>Location</th>
-                <th>Courses</th>
+                <th>Formación</th>
+                <th>Experiencia</th>
+                <th>Ubicación</th>
+                <th>Cursos</th>
             </tr>
         </thead>      
         <tr>
             <td>{{ therapist.2 }}</td>
             <td>{{ therapist.3 }}</td>
             <td>{{ therapist.4 }}</td>
-            <td><button onclick="window.location='http://localhost:8000/courses/{{therapist.0}}'">View</button></td>
+            {% comment %} <td><button onclick="window.location='http://localhost:8000/courses/{{therapist.0}}'">Ver</button></td> {% endcomment %}
+            <td><a href="{% url "therapist-courses" therapist.0 %}"><span style="font-size: 1em; color: Blue;"<i class="fa-sharp fa-solid fa-plus"></i></span></a></td>
         </tr>
     </table>
 {% endblock %}

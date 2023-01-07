@@ -17,8 +17,8 @@
                     <th>Obra Social</th>
                     <th>Nro. Afil</th>
                     <th>Nivel</th>
-                    <th>Update</th>
-                    <th>Delete</th>
+                    <th></th>
+                    <th></th>
                 </tr>
             </thead>
             {% for client in clients  %}
@@ -35,8 +35,10 @@
                 <td>{{ client.health_insurance_number}}</td>
                 <td>{{ client.school_level}}</td>
                 <!-- Dejamos un espacio entre el name de la view y el client.id con el fin de pasar el argumento -->
-                <td><a href="{% url "update-client" client.id %}"><img src="{% static 'img/edit.png' %}"</a></td>
-                <td><a href="{% url "delete-client" client.id %}"><img src="{% static 'img/delete.png' %}"</a></td>
+                {% comment %} <td><a href="{% url "update-client" client.id %}"><img src="{% static 'img/edit.png' %}"</a></td> {% endcomment %}
+                <td><a href="{% url "update-client" client.id %}"><span style="font-size: 1.2em; color: Green"><i class="fa-regular fa-pen-to-square"></i></span></a></td>
+                {% comment %} <td><a href="{% url "delete-client" client.id %}"><img src="{% static 'img/delete.png' %}"</a></td> {% endcomment %}
+                <td><a href="{% url "delete-client" client.id %}"><span style="font-size: 1.2em; color: Crimson;"<i class="fa-regular fa-trash"></i></span></a></td>
             </tr>
             {% endfor %}      
         </table>

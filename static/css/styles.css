@@ -1,5 +1,18 @@
 table, th, td {
+    color: #000000;
+    background-color: lightgray;
     border: 1px solid;
     border-collapse: collapse;
     text-align: center;
+  }
+
+  table button{
+    background-color: #7dbe7d;
+    border-radius: 0.5em;
+  }
+
+  #container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
